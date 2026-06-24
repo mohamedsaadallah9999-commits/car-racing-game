@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Car Racing Game</title>
+<style>
+  body {
+    margin: 0;
+    background: #111;
+    overflow: hidden;
+    font-family: Arial;
+  }
+
+  .road {
+    width: 200px;
+    height: 100vh;
+    background: #333;
+    margin: auto;
+    position: relative;
+  }
+
+  #car {
+    width: 40px;
+    height: 80px;
+    background: red;
+    position: absolute;
+    bottom: 20px;
+    left: 80px;
+    border-radius: 6px;
+  }
+
+  .line {
+    width: 10px;
+    height: 40px;
+    background: white;
+    position: absolute;
+    left: 95px;
+    animation: move 1s linear infinite;
+  }
+
+  @keyframes move {
+    from { top: -50px; }
+    to { top: 100%; }
+  }
+</style>
+</head>
+<body>
+
+<div class="road">
+  <div id="car"></div>
+</div>
+
+<script>
+let car = document.getElementById("car");
+let x = 80;
+
+document.addEventListener("keydown", function(e) {
+  if (e.key === "ArrowLeft") {
+    x -= 15;
+  }
+  if (e.key === "ArrowRight") {
+    x += 15;
+  }
+
+  if (x < 0) x = 0;
+  if (x > 160) x = 160;
+
+  car.style.left = x + "px";
+});
+</script>
+
+</body>
+</html>
